@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Angular Standalone Migration Assessment</mat-card-title>
+    <mat-card-subtitle>Welcome to the migration challenge!</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <h2>Getting Started</h2>
+    <p>This project contains NgModule-based Angular components that need to be migrated to standalone components.</p>
+
+    <h3>Your Tasks:</h3>
+    <mat-list>
+      <mat-list-item *ngFor="let task of tasks">
+        <div matListItemTitle>
+          <strong>{{ task.title }}</strong>
+          <mat-chip>{{ task.difficulty }}</mat-chip>
+        </div>
+        <div matListItemLine>{{ task.description }}</div>
+        <div matListItemLine>
+          <small>📁 {{ task.file }}</small> |
+          <small>⏱️ {{ task.time }}</small>
+        </div>
+      </mat-list-item>
+    </mat-list>
+
+    <h3>Before You Start:</h3>
+    <ol>
+      <li>Read the <code>ANGULAR-MIGRATION-DEVELOPER-ASSIGNMENT.md</code> file</li>
+      <li>Ensure all tests pass: <code>npm test</code></li>
+      <li>Create your branch: <code>git checkout -b migration/your-name</code></li>
+      <li>Start migrating components one by one</li>
+    </ol>
+
+    <h3>Navigation:</h3>
+    <p>
+      <button mat-raised-button color="primary" routerLink="/products">
+        <mat-icon>shopping_cart</mat-icon>
+        View Products (Task 2)
+      </button>
+      &nbsp;
+      <button mat-raised-button color="accent" routerLink="/admin">
+        <mat-icon>admin_panel_settings</mat-icon>
+        Admin Dashboard (Task 4)
+      </button>
+    </p>
+  </mat-card-content>
+</mat-card>

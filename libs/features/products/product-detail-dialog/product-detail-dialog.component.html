@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>{{ product.name }}</h2>
+
+<mat-dialog-content>
+  <div class="product-detail">
+    <img [src]="product.imageUrl" [alt]="product.name" class="product-image">
+
+    <div class="product-info">
+      <p class="description">{{ product.description }}</p>
+
+      <mat-chip-set>
+        <mat-chip>{{ product.category }}</mat-chip>
+        <mat-chip *ngFor="let tag of product.tags">{{ tag }}</mat-chip>
+      </mat-chip-set>
+
+      <div class="pricing">
+        <h3>{{ product.price | currency }}</h3>
+        <p class="stock" [class.low-stock]="product.stock < 10">
+          {{ product.stock }} items in stock
+        </p>
+      </div>
+
+      <div class="rating">
+        <mat-icon class="star">star</mat-icon>
+        <span>{{ product.rating }} ({{ product.reviewCount }} reviews)</span>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Close</button>
+  <button mat-raised-button color="primary" (click)="addToCart()" [disabled]="product.stock === 0">
+    <mat-icon>shopping_cart</mat-icon>
+    Add to Cart
+  </button>
+</mat-dialog-actions>
