@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
  *
  * Modern standalone routing architecture:
  * - Products: Uses standalone routes file (products.routes.ts)
- * - Admin: Will be migrated to standalone in Task 4
+ * - Admin: Migrated to standalone in Task 4 (admin.routes.ts)
  */
 export const appRoutes: Routes = [
   {
@@ -21,9 +21,9 @@ export const appRoutes: Routes = [
   },
   {
     path: 'admin',
-    // Legacy approach: Still using NgModule (will be migrated in Task 4)
-    loadChildren: () => import('../../libs/features/admin/admin.module')
-      .then(m => m.AdminModule)
+    // Modern approach: Load routes file with standalone components
+    loadChildren: () => import('../../libs/features/admin/admin.routes')
+      .then(m => m.ADMIN_ROUTES)
   },
   {
     path: '**',
