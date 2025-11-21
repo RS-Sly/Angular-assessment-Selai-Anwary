@@ -2,12 +2,11 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 /**
  * Highlight Directive
- * Part of SharedUiModule - needs to be converted to standalone
- *
- * TODO: Add standalone: true and any required imports
+ * Converted to standalone - can be imported directly
  */
 @Directive({
-  selector: '[appHighlight]'
+  selector: '[appHighlight]',
+  standalone: true
 })
 export class HighlightDirective {
   @Input() appHighlight = 'yellow';

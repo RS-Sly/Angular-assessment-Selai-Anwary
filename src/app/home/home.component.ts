@@ -1,7 +1,32 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
 
+/**
+ * Home Component - Now Standalone!
+ *
+ * Demonstrates using the shared UI barrel export:
+ * - Imports UserAvatarComponent directly from barrel
+ * - Imports DateAgoPipe directly from barrel
+ * - No SharedUiModule needed!
+ */
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatChipsModule,
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
