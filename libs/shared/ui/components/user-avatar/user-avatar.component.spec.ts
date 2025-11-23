@@ -4,8 +4,7 @@ import { UserAvatarComponent } from './user-avatar.component';
 /**
  * Test file for UserAvatarComponent
  *
- * After migration, this test should still pass with minimal changes.
- * The main change will be how the component is imported in TestBed.
+ * Updated for standalone component - component is now imported instead of declared
  */
 describe('UserAvatarComponent', () => {
   let component: UserAvatarComponent;
@@ -13,9 +12,7 @@ describe('UserAvatarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserAvatarComponent ]
-      // After migration, change to:
-      // imports: [ UserAvatarComponent ]
+      imports: [ UserAvatarComponent ]  // Standalone component goes in imports
     })
     .compileComponents();
 

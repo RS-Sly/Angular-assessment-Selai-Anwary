@@ -72,6 +72,7 @@ The migration followed an incremental approach, completing one task at a time:
 | Circular dependencies | Build warnings | Extract shared interfaces, restructure imports |
 | Guard migration | Routes not protected | Use `CanActivateFn` and `inject()` function |
 | Lazy loading confusion | Type errors | `loadChildren` for Routes, `loadComponent` for Components |
+| Test configuration | Not all tests running | Update `angular.json` test config to include all spec files (verify with `find` or glob patterns) |
 
 ---
 
@@ -363,6 +364,7 @@ This migration successfully converted the application from NgModules to standalo
 - ✅ Improved code organization with explicit dependencies
 - ✅ Enhanced lazy loading with two-level code splitting
 - ✅ Modernized patterns (functional guards, barrel exports)
+- ✅ Add extra uni-tests for standalone components and guards
 
 **Best practices:**
 1. Start small and iterate
