@@ -17,17 +17,22 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ProductListComponent } from './product-list.component';
-import { ProductService } from '../../../data-access/services/product.service';
-import { CartService } from '../../../data-access/services/cart.service';
+import { ProductService } from '@data-access/services/product.service';
+import { CartService } from '@data-access/services/cart.service';
 
+/**
+ * Test file for ProductListComponent
+ *
+ * Updated for standalone component - component is now imported instead of declared
+ */
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductListComponent],
       imports: [
+        ProductListComponent,  // Standalone component goes in imports
         BrowserAnimationsModule,
         HttpClientTestingModule,
         ReactiveFormsModule,

@@ -1,13 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 import { AdminService } from '../services/admin.service';
+import { AdminHeaderComponent } from '../admin-header/admin-header.component';
+import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
 
 /**
  * Admin Dashboard Component
- * Part of the Admin Module that needs to be converted to standalone
+ * Converted to standalone component
  */
 @Component({
   selector: 'app-admin-dashboard',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    AdminHeaderComponent,
+    AdminSidebarComponent
+  ],
   template: `
     <div class="admin-dashboard">
       <app-admin-header

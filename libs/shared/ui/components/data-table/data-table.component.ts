@@ -1,15 +1,39 @@
 import { Component, Input, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { SelectionModel } from '@angular/cdk/collections';
 
 /**
  * Shared Data Table Component
- * Referenced in SharedUiModule - needs to be converted to standalone
+ * Converted to standalone - can be imported directly
+ *
+ * Features:
+ * - Sortable columns with Material sort
+ * - Pagination support
+ * - Row selection with checkboxes
+ * - Dynamic column rendering
+ * - Row actions with icons
+ * - No data state
  */
 @Component({
   selector: 'app-data-table',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule
+  ],
   template: `
     <div class="data-table-container">
       <table mat-table [dataSource]="dataSource" matSort class="data-table">
@@ -68,7 +92,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 
         <!-- No Data Row -->
         <tr class="mat-row no-data-row" *matNoDataRow>
-          <td class="mat-cell" [colspan]="displayedColumns.length">
+          <td class="mat-cell" [attr.colspan]="displayedColumns.length">
             No data available
           </td>
         </tr>

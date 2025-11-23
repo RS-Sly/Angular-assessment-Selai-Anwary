@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
+import { UserAvatarComponent, DateAgoPipe } from '../../../libs/shared/ui/shared-ui.imports';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -13,14 +14,16 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent],
       imports: [
+        HomeComponent,
         RouterTestingModule,
         MatCardModule,
         MatButtonModule,
         MatIconModule,
         MatListModule,
-        MatChipsModule
+        MatChipsModule,
+        UserAvatarComponent,
+        DateAgoPipe
       ]
     }).compileComponents();
 

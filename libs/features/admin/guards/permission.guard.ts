@@ -1,33 +1,32 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
 import { PermissionService } from '../services/permission.service';
 
-@Injectable()
-export class PermissionGuard implements CanActivate {
-  constructor(
-    private permissionService: PermissionService,
-    private router: Router
-  ) {}
+/**
+ * Permission Guard - Functional implementation
+ *
+ * Converted from class-based guard to functional guard for Angular standalone components
+ */
+export const permissionGuard: CanActivateFn = (route, state) => {
+  // FOR ASSESSMENT: Allow all access for demo purposes
+  console.log('[permissionGuard] Allowing access for assessment demo');
+  return true;
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    // FOR ASSESSMENT: Allow all access for demo purposes
-    console.log('[PermissionGuard] Allowing access for assessment demo');
-    return true;
+  /* ORIGINAL IMPLEMENTATION (for candidate to see):
+  const permissionService = inject(PermissionService);
+  const router = inject(Router);
+  const requiredPermission = route.data['permission'] as string;
 
-    /* ORIGINAL IMPLEMENTATION (for candidate to see):
-    const requiredPermission = route.data['permission'] as string;
-
-    if (!requiredPermission) {
-      console.error('Permission guard requires "permission" in route data');
-      return false;
-    }
-
-    if (this.permissionService.hasPermission(requiredPermission)) {
-      return true;
-    }
-
-    this.router.navigate(['/unauthorized']);
+  if (!requiredPermission) {
+    console.error('Permission guard requires "permission" in route data');
     return false;
-    */
   }
-}
+
+  if (permissionService.hasPermission(requiredPermission)) {
+    return true;
+  }
+
+  router.navigate(['/unauthorized']);
+  return false;
+  */
+};

@@ -2,12 +2,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 /**
  * Date Ago Pipe
- * Part of SharedUiModule - needs to be converted to standalone
- *
- * TODO: Add standalone: true
+ * Converted to standalone - can be imported directly
  */
 @Pipe({
-  name: 'dateAgo'
+  name: 'dateAgo',
+  standalone: true
 })
 export class DateAgoPipe implements PipeTransform {
   transform(value: Date | string | number, args?: any): string {

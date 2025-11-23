@@ -1,7 +1,16 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-admin-sidebar',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatListModule,
+    MatIconModule
+  ],
   template: `
     <mat-nav-list>
       <a mat-list-item

@@ -6,16 +6,25 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AdminDashboardComponent } from './admin-dashboard.component';
+import { AdminHeaderComponent } from '../admin-header/admin-header.component';
+import { AdminSidebarComponent } from '../admin-sidebar/admin-sidebar.component';
 import { AdminService } from '../services/admin.service';
 
+/**
+ * Test file for AdminDashboardComponent
+ *
+ * Updated for standalone component - component and its child components are now imported
+ */
 describe('AdminDashboardComponent', () => {
   let component: AdminDashboardComponent;
   let fixture: ComponentFixture<AdminDashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AdminDashboardComponent],
       imports: [
+        AdminDashboardComponent,  // Standalone component goes in imports
+        AdminHeaderComponent,     // Child component
+        AdminSidebarComponent,    // Child component
         HttpClientTestingModule,
         RouterTestingModule,
         MatCardModule,

@@ -22,8 +22,8 @@ import { appRoutes } from './app.routes';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
+    // HomeComponent is now standalone, imported below
   ],
   imports: [
     BrowserModule,
@@ -31,6 +31,9 @@ import { appRoutes } from './app.routes';
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+
+    // Standalone components
+    HomeComponent,
 
     // Material
     MatToolbarModule,

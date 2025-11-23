@@ -2,18 +2,19 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 /**
  * Highlight Directive
- * Part of SharedUiModule - needs to be converted to standalone
- *
- * TODO: Add standalone: true and any required imports
+ * Converted to standalone - can be imported directly
  */
 @Directive({
-  selector: '[appHighlight]'
+  selector: '[appHighlight]',
+  standalone: true
 })
 export class HighlightDirective {
-  @Input() appHighlight = 'yellow';
+  private static readonly DEFAULT_HIGHLIGHT_COLOR = 'yellow';
+
+  @Input() appHighlight = HighlightDirective.DEFAULT_HIGHLIGHT_COLOR;
   @Input() highlightOnHover = true;
 
-  private originalBackground: string;
+  private readonly originalBackground: string;
 
   constructor(private el: ElementRef) {
     this.originalBackground = this.el.nativeElement.style.backgroundColor;
@@ -21,7 +22,9 @@ export class HighlightDirective {
 
   @HostListener('mouseenter') onMouseEnter() {
     if (this.highlightOnHover) {
-      this.highlight(this.appHighlight);
+      // Use default color if appHighlight is empty string
+      const color = this.appHighlight || HighlightDirective.DEFAULT_HIGHLIGHT_COLOR;
+      this.highlight(color);
     }
   }
 
@@ -33,11 +36,12 @@ export class HighlightDirective {
 
   @HostListener('click') onClick() {
     if (!this.highlightOnHover) {
+      const color = this.appHighlight || HighlightDirective.DEFAULT_HIGHLIGHT_COLOR;
       const currentColor = this.el.nativeElement.style.backgroundColor;
-      if (currentColor === this.appHighlight) {
+      if (currentColor === color) {
         this.highlight(this.originalBackground);
       } else {
-        this.highlight(this.appHighlight);
+        this.highlight(color);
       }
     }
   }
